@@ -10,6 +10,7 @@ public class MeshGenerator : MonoBehaviour
     public MeshFilter walls;
     private List<Vector3> vertices;
     private List<int> triangles;
+
     private Dictionary<int, List<Triangle>> triangleDictionary = new Dictionary<int, List<Triangle>>();
     List<List<int>> outlines = new List<List<int>>();
     HashSet<int> checkedVertices = new HashSet<int>();
@@ -19,9 +20,12 @@ public class MeshGenerator : MonoBehaviour
         triangleDictionary.Clear();
         outlines.Clear();
         checkedVertices.Clear();
+
         squareGrid = new SquareGrid(map, squareSize);
         vertices = new List<Vector3>();
         triangles = new List<int>();
+
+
         for (int x = 0; x < squareGrid.squares.GetLength(0); x++)
         {
             for (int y = 0; y < squareGrid.squares.GetLength(1); y++)
@@ -31,9 +35,11 @@ public class MeshGenerator : MonoBehaviour
         }
         Mesh mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
+
         mesh.vertices = vertices.ToArray();
         mesh.triangles = triangles.ToArray();
         mesh.RecalculateNormals();
+
         CreateWallMesh();
 
     }
