@@ -97,7 +97,7 @@ public class MapGenerator : MonoBehaviour
         }
         survivingRooms.Sort();
         survivingRooms[0].isMainRoom = true;
-        survivingRooms[0].isAccessableFromMainRoom = true;
+        survivingRooms[0].isAccessibleFromMainRoom = true;
         ConnectClosestRooms(survivingRooms);
     }
 
